@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# PayGreen Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+> Ce test basé sur un create-react-app des plus basique équipé d'un petit react-router-dom et d'un styled-components.
 
-In the project directory, you can run:
+La page photos-by-album affiche des photos par albums. Les photos sont triées par taille de titre et affichés selon la taille du titre grâce au sélecteur DisplayLimit.js. Si vous sélectionnez 10, vous ne devez voir que les titres d'une longueur inférieur ou égale à 10 (ne cherchez pas à savoir à quoi cette fonctionne peut service : à rien).
 
-### `yarn start`
+## Votre test si vous l'acceptez
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Le but n'est pas de vous faire faire quelque chose qui dure 2 jours, vous n'en avez pas envie et nous non plus.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+🚀 **Forkez ce projet et go !**
+### 🔨 Clean & Repare 
 
-### `yarn test`
+- Faites un check global de l'application, verifiez s'il n'y a pas des bugs, des problèmes d'optimisations, ou autre chose gênante à vos yeux.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 💻 A développer 
 
-### `yarn build`
+- Intégrez dans une nouvelle page, la route https://jsonplaceholder.typicode.com/users et faites un affichage de toutes les données disponibles (c'est pas énorme) avec une Grid (on teste un peu votre goût au passage 👀 des couleurs ci-dessous pour vous amusez, c'est celles de PayGreen).
+- Qui dit test dit test ?
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Couleurs disponibles
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| nom                     | hexa                                                  |
+| ----------------------- | ----------------------------------------------------- |
+| PrimaryMain             | <span style="background-color:#33ad73">#33ad73</span> |
+| PrimaryLight            | <span style="background-color:#d5f3e5">#d5f3e5</span> |
+| PrimaryGradientBase     | <span style="background-color:#77d1a6">#77d1a6</span> |
+| PrimaryGradientShade    | <span style="background-color:#a4db95">#a4db95</span> |
+| SecondaryMain           | <span style="background-color:#00a99d">#00a99d</span> |
+| SecondaryLight          | <span style="background-color:#e1f3f2">#e1f3f2</span> |
+| SecondaryGradientBase   | <span style="background-color:#51c6be">#51c6be</span> |
+| SecondaryGradientShade  | <span style="background-color:#76bbd8">#76bbd8</span> |
+| TertiaryMain            | <span style="background-color:#e58a28">#e58a28</span> |
+| TertiaryLight           | <span style="background-color:#fbe6ce">#fbe6ce</span> |
+| TertiaryGradientBase    | <span style="background-color:#fab56b">#fab56b</span> |
+| TertiaryGradientShade   | <span style="background-color:#faa272">#faa272</span> |
+| QuaternaryMain          | <span style="background-color:#ec6a6a">#ec6a6a</span> |
+| QuaternaryLight         | <span style="background-color:#ffe0e1">#ffe0e1</span> |
+| QuaternaryGradientBase  | <span style="background-color:#e98e90">#e98e90</span> |
+| QuaternaryGradientShade | <span style="background-color:#e98eb9">#e98eb9</span> |
+| QuinaryMain             | <span style="background-color:#a26ae1">#a26ae1</span> |
+| QuinaryLight            | <span style="background-color:#e9d9fb">#e9d9fb</span> |
+| QuinaryGradientBase     | <span style="background-color:#b887ee">#b887ee</span> |
+| QuinaryGradientShade    | <span style="background-color:#dd94ef">#dd94ef</span> |
