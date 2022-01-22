@@ -5,7 +5,8 @@ import styles from "./VehiclesIndex.module.scss";
 
 const VehiculeIndex = () => {
   const [cars, setCars] = useState(null);
-  let order = false;
+  // Fix: Ici j'ai remplacé la variable par une variable d'état pour permettre à la vue de se ré rendre
+  const [order, setOrder] = useState(false);
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -13,6 +14,10 @@ const VehiculeIndex = () => {
     };
     fetchCars();
   }, []);
+
+  const handleClick = () => {
+    setOrder(!order);
+  }
 
   if (!cars) {
     return <>loading</>;
@@ -23,7 +28,7 @@ const VehiculeIndex = () => {
       <>
         <h3>My garage</h3>
         <div className={styles.actionsContainer}>
-          <button onClick={() => (order = false)}>Reset order</button>
+          <button onClick={handleClick}>Reset order</button>
         </div>
         <div className={styles.cardsContainer}>
           {cars.map((car) => {
@@ -41,7 +46,7 @@ const VehiculeIndex = () => {
       <div className={styles.actionsContainer}>
         <button
           style={{ border: "red 1px solid", cursor: "pointer" }}
-          onClick={() => (order = true)}
+          onClick={handleClick}
         >
           Only black & white
         </button>
