@@ -32,7 +32,11 @@ const VehiculeIndex = () => {
         </div>
         <div className={styles.cardsContainer}>
           {cars.map((car) => {
-            if (car.color !== "Black" && car.color !== "White") return <> </>;
+            // Fix: Ici je return null plutôt qu'un fragment, pour signifier qu'il n'y a pas de composant à rendre
+            if (car.color !== "Black" && car.color !== "White") {
+              return null;
+            }
+
             return <VehicleCard key={car.id} vehicle={car} />;
           })}
         </div>
