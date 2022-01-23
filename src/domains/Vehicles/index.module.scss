@@ -1,0 +1,27 @@
+@import '../../variables.scss';
+
+@mixin media-min($_min-width) {
+  @media screen and (min-width: $_min-width) {
+      &{ @content; }
+  }
+}
+
+.pageContainer {
+  padding-left: 30px;
+  padding-top: 30px;
+  @include media-min(768px) {
+    padding-left: 330px;
+  }
+}
+.drawerItem {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+h3 {
+  border-bottom: solid 1px $divider;
+  margin: 0;
+  padding: 15px;
+  margin-bottom: 0;
+  color: $tertiary;
+  font-size: 1.5rem;
+}

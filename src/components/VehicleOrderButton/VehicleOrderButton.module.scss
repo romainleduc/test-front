@@ -1,6 +1,13 @@
+@import '../../variables.scss';
+
 .filterButton {
   cursor: pointer;
+  background-color: $secondary;
+  color: #fff;
+  border: solid 1px $divider;
+  border-radius: $shapeBorderRadius;
+  padding: 10px;
 }
 .ordered {
-  border: red 1px solid;
+  border: solid 1px $quaternary;
 }

@@ -10,9 +10,9 @@ import styles from "./VehicleOrderButton.module.scss";
  * n'était pas filtrée par couleur. J'ai donc ajouté la classe `filterButton`
  * qui le rajoute pour les deux styles de bouton
  */
-const VehicleOrderButton = ({ order, ...other }) => (
+const VehicleOrderButton = ({ order, className, ...other }) => (
   <button
-    className={`${styles.filterButton} ${order ? styles.ordered : ''}`}
+    className={`${styles.filterButton} ${order ? styles.ordered : ''} ${className || ''}`}
     {...other}
   >
     {order ? 'Reset order': 'Only black & white'}

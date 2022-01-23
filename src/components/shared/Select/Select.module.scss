@@ -1,0 +1,8 @@
+@import '../../../variables.scss';
+
+.select {
+  padding: 10px;
+  border: solid 1px $divider;
+  border-radius: $shapeBorderRadius;
+  cursor: pointer;
+}
