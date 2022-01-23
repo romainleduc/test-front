@@ -10,4 +10,4 @@ const Drawer = ({ title, children }) => (
   </div>
 );
 
-export default React.memo(Drawer);
+export default Drawer;
