@@ -1,6 +1,9 @@
 import style from "./VehicleCard.module.scss";
 
-let VehicleCard = (props) => {
+/**
+ * Review: Ici j'ai remplacé le mot-clé let par const
+ */
+const VehicleCard = (props) => {
   return (
     <div className={style.container}>
       <div>
