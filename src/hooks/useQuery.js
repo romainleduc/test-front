@@ -1,58 +1,54 @@
-import React from 'react';
-
-function fetchReducer(state, action) {
-  switch (action.type) {
-    case 'SUCCESS': {
-      return {
-        error: null,
-        data: action.data,
-        loading: false,
-      }
-    }
-    case 'ERROR': {
-      return {
-        error: action.error,
-        data: null,
-        loading: false,
-      }
-    }
-    case 'FETCHING': {
-      return {
-        ...state,
-        loading: action.loading,
-      }
-    }
-    default: {
-      return state
-    }
-  }
-}
-
-const initialState = {
-  error: null,
-  data: null,
-  loading: false,
-}
+import React, { useRef } from 'react';
+import fetchAction from '../actions/fetchAction';
+import fetchReducer from '../reducers/fetchReducer';
 
 const useQuery = (url) => {
   const [{ error, data, loading }, dispatch] = React.useReducer(
     fetchReducer,
-    initialState,
+    {
+      error: null,
+      data: null,
+      loading: false,
+    },
   );
+  // Référence qui me permet de sauvegarder les données de la première requête
+  const currentDataRef = useRef(null);
 
+  // Fait une nouvelle requête à l'api seulement quand l'URL change
   React.useEffect(() => {
-    dispatch({ type: 'FETCHING', loading: true });
-
-    fetch(`https://random-data-api.com/api${url}`)
-    .then(async response =>
-      dispatch({ type: 'SUCCESS', data: await response.json() })
-    )
-    .catch(error =>
-      dispatch({ type: 'ERROR', error })
-    );
+    fetchAction(url, dispatch)
+      .then(data => currentDataRef.current = data)
+      .catch(data => currentDataRef.current = data);
   }, [url]);
 
-  return { error, data, loading };
+  // Utilise les données sauvegarder par la référence pour filtrer la liste
+  // et mettre à jour le state 
+  const refetch = (filters) => {
+    let currentData = currentDataRef.current;
+
+    dispatch({ type: 'LOADING', loading: true });
+
+    // S'il n'y a pas de demande filtres, je renvoie toutes les données sauvegardées
+    // par la référence `currentDataRef` sans passer par la méthode de filtre
+    if (filters.mileageGte || filters.mileageLte) {
+      currentData = currentData?.filter(item =>
+        (!filters.mileageGte || item.mileage >= filters.mileageGte)
+        && (!filters.mileageLte || item.mileage <= filters.mileageLte)
+      );
+    }
+
+    dispatch(
+      {
+        type: 'SUCCESS',
+        data: currentData
+      }
+    );
+  }
+
+  return [
+    { error, data, loading },
+    refetch
+  ]
 }
 
 export default useQuery;
