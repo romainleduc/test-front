@@ -62,7 +62,7 @@ const VehiculeIndex = () => {
             name="mileageGte"
             onChange={handleChange}
           >
-            <Option value={0} label="À partir de" />
+            <Option value={0} label="Mileage min" />
             <Option value={10000} label="10 000" />
             <Option value={20000} label="20 000" />
             <Option value={30000} label="30 000" />
@@ -74,7 +74,7 @@ const VehiculeIndex = () => {
             name="mileageLte"
             onChange={handleChange}
           >
-            <Option value={0} label="Jusqu'à" />
+            <Option value={0} label="Mileage max" />
             <Option value={10000} label="10 000" />
             <Option value={20000} label="20 000" />
             <Option value={30000} label="30 000" />
