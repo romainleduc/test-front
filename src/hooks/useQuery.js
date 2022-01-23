@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import fetchAction from '../actions/fetchAction';
 import fetchReducer from '../reducers/fetchReducer';
 
@@ -12,7 +12,7 @@ const useQuery = (url) => {
     },
   );
   // Référence qui me permet de sauvegarder les données de la première requête
-  const currentDataRef = useRef(null);
+  const currentDataRef = React.useRef(null);
 
   // Fait une nouvelle requête à l'api seulement quand l'URL change
   React.useEffect(() => {
@@ -22,8 +22,9 @@ const useQuery = (url) => {
   }, [url]);
 
   // Utilise les données sauvegarder par la référence pour filtrer la liste
-  // et mettre à jour le state 
-  const refetch = (filters) => {
+  // et mettre à jour le state (J'ai utilisé un useCallback ici étant donné que le hook se ré-rend assé
+  // souvent cela permet de créer la méthode qu'une seule fois)
+  const refetch = React.useCallback((filters) => {
     let currentData = currentDataRef.current;
 
     dispatch({ type: 'LOADING', loading: true });
@@ -43,7 +44,7 @@ const useQuery = (url) => {
         data: currentData
       }
     );
-  }
+  }, [dispatch]);
 
   return [
     { error, data, loading },

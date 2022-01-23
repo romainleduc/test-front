@@ -19,4 +19,4 @@ const VehicleOrderButton = ({ order, ...other }) => (
   </button>
 );
 
-export default VehicleOrderButton;
+export default React.memo(VehicleOrderButton);

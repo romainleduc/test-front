@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import VehicleFilter from "../../components/VehicleFilter/VehicleFilter";
 import VehicleList from "../../components/VehicleList/VehicleList";
 import VehicleOrderButton from "../../components/VehicleOrderButton/VehicleOrderButton";
@@ -7,7 +7,7 @@ import useQuery from "../../hooks/useQuery";
 const VehiculeIndex = () => {
   // Review: Ici j'ai remplacé le hook useState par un hook personnalisé
   // qui utilise useReducer, qui est plus adapté pour faire des requêtes
-  const [{ data, error, loading }, refetchWithFilters] = useQuery('/vehicle/random_vehicle?size=10');
+  const [{ data, error, loading }, refetchWithFilters] = useQuery('/vehicle/random_vehicle?size=100');
   // Fix: Ici j'ai remplacé la variable par une variable d'état pour
   // permettre à la vue de se ré-rendre
   const [order, setOrder] = useState(false);
@@ -17,11 +17,16 @@ const VehiculeIndex = () => {
     mileageLte: 0,
   });
 
-  const handleClick = () => {
+  // J'ai ajouté un useCallback pour éviter de recrée la méthode lorsque
+  // le state filters ré-rend le composant et aussi pour ne pas casser
+  // le React.memo du composant `VehicleOrderButton`
+  const handleClick = useCallback(() => {
     setOrder(!order);
-  }
+  }, [order])
 
-  const handleChange = (event) => {
+  // J'ai ajouté un useCallback pour éviter de recrée la méthode lorsque
+  // le state order ré-rend le composant.
+  const handleChange = useCallback((event) => {
     const { name, value } = event.target;
 
     setFilters({
@@ -35,7 +40,7 @@ const VehiculeIndex = () => {
       ...filters,
       [name]: value === '0' ? null : +value,
     });
-  }
+  }, [filters, refetchWithFilters, setFilters]);
 
   if (error) {
     return <>error</>;
