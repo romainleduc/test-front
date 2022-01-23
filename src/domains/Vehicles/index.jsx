@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 import VehicleFilter from "../../components/VehicleFilter/VehicleFilter";
+import VehicleFilterOption from "../../components/VehicleFilterOption.js/VehicleFilterOption";
 import VehicleList from "../../components/VehicleList/VehicleList";
 import VehicleOrderButton from "../../components/VehicleOrderButton/VehicleOrderButton";
 import useQuery from "../../hooks/useQuery";
@@ -62,9 +63,12 @@ const VehiculeIndex = () => {
               label="À partir de"
               onChange={handleChange}
             >
-              <option value={0}>Tout</option>
-              <option value={30000}>30 000</option>
-              <option value={100000}>100 000</option>
+              <VehicleFilterOption value={0} label="Tout" />
+              <VehicleFilterOption value={10000} label="10 000" />
+              <VehicleFilterOption value={20000} label="20 000" />
+              <VehicleFilterOption value={30000} label="30 000" />
+              <VehicleFilterOption value={40000} label="40 000" />
+              <VehicleFilterOption value={50000} label="50 000" />
             </VehicleFilter>
             <VehicleFilter
               value={filters.mileageLte}
@@ -72,9 +76,12 @@ const VehiculeIndex = () => {
               label="Jusqu'à"
               onChange={handleChange}
             >
-              <option value={0}>Tout</option>
-              <option value={30000}>30 000</option>
-              <option value={100000}>100 000</option>
+              <VehicleFilterOption value={0} label="Tout" />
+              <VehicleFilterOption value={10000} label="10 000" />
+              <VehicleFilterOption value={20000} label="20 000" />
+              <VehicleFilterOption value={30000} label="30 000" />
+              <VehicleFilterOption value={40000} label="40 000" />
+              <VehicleFilterOption value={50000} label="50 000" />
             </VehicleFilter>
           </>
         }
