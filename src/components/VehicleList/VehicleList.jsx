@@ -5,6 +5,9 @@ import styles from "./VehicleList.module.scss";
 /**
  * Review: Ici j'ai créé un composant qui s'occupe seulement d'afficher
  * la liste des voitures pour séparer les comportements.
+ *
+ * Fix: Au moment du map je me suis servi de l'uid des véhicules pour
+ * le passer à la propriété key parce que leur id n'est pas unique
  */
 const VehicleList = ({ vehicles, actions, loading, order }) => (
   <>
@@ -23,12 +26,12 @@ const VehicleList = ({ vehicles, actions, loading, order }) => (
             return null;
           }
   
-          return <VehicleCard key={car.id} vehicle={car} />;
+          return <VehicleCard key={`vehicule-${car.uid}`} vehicle={car} />;
         })
       }
       {!order &&
         vehicles?.map(car => (
-          <VehicleCard key={car.id} vehicle={car} />
+          <VehicleCard key={`vehicule-${car.uid}`} vehicle={car} />
         ))
       }
     </div>
